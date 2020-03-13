@@ -1,9 +1,11 @@
+// ë¬¸ìžì½”ë“œì¸ ASCIIì½”ë“œë¥¼ ì´ìš©í•´ì„œ ì§„ìˆ˜ë³€í™˜ í•´ë³´ê¸° ì½”ë“œ. ë””ì§€í„¸ê³µí•™ ì½”ë”©ê³¼ì œ 1ë²ˆ
+
 #include<stdio.h>
 #include<string.h>
 #define _CRT_SECURE_NO_WARNINGS
 #define size_arr 16
 
-//2Áø¼ö -> 10Áø¼ö
+//2ì§„ìˆ˜ -> 10ì§„ìˆ˜
 int bin_to_decimal(char input[])
 {
 	int result = 0;
@@ -20,7 +22,7 @@ int bin_to_decimal(char input[])
 	return result;
 }
 
-//°ÅµìÁ¦°ö ÇÔ¼ö
+//ê±°ë“­ì œê³± í•¨ìˆ˜
 int exponential(int a, int b)
 {
 	int count = 0;
@@ -31,7 +33,7 @@ int exponential(int a, int b)
 	}
 	return result;
 }
-//16Áø¼ö -> 10Áø¼ö
+//16ì§„ìˆ˜ -> 10ì§„ìˆ˜
 int hex_to_decimal(char input[])
 {
 	int result = 0;
@@ -57,7 +59,7 @@ int hex_to_decimal(char input[])
 	return result;
 }
 
-//2Áø¼ö -> 16Áø¼ö 
+//2ì§„ìˆ˜ -> 16ì§„ìˆ˜ 
 void bin_to_heximal(int input, char arr[])
 {
 	int index = 0;
@@ -79,7 +81,7 @@ void bin_to_heximal(int input, char arr[])
 		index++;
 	}
 }
-//10Áø¼ö -> 2Áø¼ö
+//10ì§„ìˆ˜ -> 2ì§„ìˆ˜
 int decimal_to_bin(int input)
 {
 	long int result = 0;
@@ -97,31 +99,31 @@ int decimal_to_bin(int input)
 
 int main()
 {
-	char input_bin[size_arr] = { 0, };//ÀÔ·ÂµÈ 2Áø¼ö°ª
-	char input_hex[size_arr] = { 0, };//ÀÔ·ÂµÈ 16Áø¼ö°ª
-	char bin_to_hex[size_arr] = { 0, };//2Áø¼ö 16Áø¼ö º¯È¯
+	char input_bin[size_arr] = { 0, };//ìž…ë ¥ëœ 2ì§„ìˆ˜ê°’
+	char input_hex[size_arr] = { 0, };//ìž…ë ¥ëœ 16ì§„ìˆ˜ê°’
+	char bin_to_hex[size_arr] = { 0, };//2ì§„ìˆ˜ 16ì§„ìˆ˜ ë³€í™˜
 	int bin_to_decim = 0;
 	long int hex_to_decim = 0, decim_to_bin = 0;
 	int count = 0;
 
-	//2Áø¼ö, 16Áø¼ö ¹Þ±â
+	//2ì§„ìˆ˜, 16ì§„ìˆ˜ ë°›ê¸°
 	printf("Type a binary number :");
 	scanf_s("%s", input_bin, size_arr);
 	printf("Type a Hexademical number : ");
 	scanf_s("%s", input_hex, size_arr);
 
-	//2Áø¹ý -> 10Áø¹ý º¯È¯ ÇÔ¼ö
+	//2ì§„ë²• -> 10ì§„ë²• ë³€í™˜ í•¨ìˆ˜
 	bin_to_decim = bin_to_decimal(input_bin);
 
-	//2Áø¹ý -> 16Áø¹ý º¯È¯ ÇÔ¼ö
+	//2ì§„ë²• -> 16ì§„ë²• ë³€í™˜ í•¨ìˆ˜
 	bin_to_heximal(bin_to_decim, bin_to_hex);
 
-	//16Áø¼ö -> 10Áø¼ö
+	//16ì§„ìˆ˜ -> 10ì§„ìˆ˜
 	hex_to_decim = hex_to_decimal(input_hex);
-	//10Áø¼ö -> 2Áø¼ö
+	//10ì§„ìˆ˜ -> 2ì§„ìˆ˜
 	decim_to_bin = decimal_to_bin(hex_to_decim);
 
-	FILE *fp = fopen("B889047_À±ÁØÈ£.txt", "w");
+	FILE *fp = fopen("B889047_ìœ¤ì¤€í˜¸.txt", "w");
 	fprintf(fp, "Decimal number of %s is %d\n", input_bin, bin_to_decim);
 	fprintf(fp, "Hexadecimal number of %s is ", input_bin);
 	for (count = strlen(bin_to_hex) - 1; count >= 0; count--)
