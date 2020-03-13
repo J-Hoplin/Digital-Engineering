@@ -3,18 +3,18 @@
 #include<string.h>
 #include<memory.h>
 #define size_arr 100
-//VS2017±âÁØ ÇÁ·ÎÁ§Æ® ¼Ó¼º - C/C++ - ÀüÃ³¸®±â ºÎºĞ¿¡ _CRT_SECURE_NO_WARNINGS ¸¦ ³Ö¾îÁÖ¾ú½À´Ï´Ù.
+//í”„ë¡œì íŠ¸ ì†ì„± - C/C++ - ì „ì²˜ë¦¬ê¸° ë¶€ë¶„ì— _CRT_SECURE_NO_WARNINGS ë¥¼ ë„£ì–´ì£¼ì—ˆìŠµë‹ˆë‹¤.
 
 void XOR_F(char CRC_Val,char GCODE_Val, int index, char remainder[])
 {
 
 	if (CRC_Val == GCODE_Val)
 	{
-		remainder[index] = 48;//0ÀÇ ASCII : 48
+		remainder[index] = 48;//0ì˜ ASCII : 48
 	}
 	else
 	{
-		remainder[index] = 49;//1ÀÇ ASCII : 49
+		remainder[index] = 49;//1ì˜ ASCII : 49
 	}
 }
 
@@ -49,13 +49,13 @@ void del_zero(char *remainder,int *index_CRC, char *bin,char *sum_CRC, char *Gen
 	int index_count = 0;
 	int count2 = 0;
 	int total_index = strlen(remainder);
-	//0°³¼ö ¼¼±â
+	//0ê°œìˆ˜ ì„¸ê¸°
 	while (remainder[index_count] == 48)
 	{
 		index_count++;
 	}
 	int index_count_cpy = index_count;
-	//°ª³»¸®±â
+	//ê°’ë‚´ë¦¬ê¸°
 	for (; count2 < index_count_cpy; count2++)
 	{
 		remaind_cpy[count2] = remainder[count2];
@@ -126,7 +126,7 @@ void First_Cal(char *Generation_Code, char *bin, char *result)
 	char remainder[size_arr];
 	int count;
 
-	//ÃÊ±â °è»ê
+	//ì´ˆê¸° ê³„ì‚°
 	for (; index_GCODE < strlen(Generation_Code); index_GCODE++)
 	{
 		XOR_F(bin[index_CRC], Generation_Code[index_GCODE], index_GCODE,remainder);
@@ -142,7 +142,7 @@ void First_Cal(char *Generation_Code, char *bin, char *result)
 }
 int main()
 {
-	char Generation_Code[] = "10011";
+	char Generation_Code[] = "10011"; // This variable is for test case. You need to open file to solve this question.
 	char bin[size_arr];
 	char bin_cpy[size_arr];
 	char n_data[size_arr] = { 0, };
@@ -151,16 +151,16 @@ int main()
 
 	FILE *fp;
 	fp = fopen("data.txt", "r");
-	fgets(bin, size_arr, fp);//fgetsÀÇ paraeter¼ø¼­ : (¹è¿­, ¹è¿­Å©±â, ÆÄÀÏÆ÷ÀÎÅÍ)
+	fgets(bin, size_arr, fp);//fgetsì˜ paraeterìˆœì„œ : (ë°°ì—´, ë°°ì—´í¬ê¸°, íŒŒì¼í¬ì¸í„°)
 
 	memcpy(bin_cpy, bin, sizeof(bin));
 
-	add_zero(bin,Generation_Code,length_GCODE);// ÃÊ±â CRCÄÚµå µÚ¾Ö 0ºÙÀÌ±â
+	add_zero(bin,Generation_Code,length_GCODE);// ì´ˆê¸° CRCì½”ë“œ ë’¤ì•  0ë¶™ì´ê¸°
 	First_Cal(Generation_Code, bin,result);// CRC Calculation
 	strcat(bin_cpy, result);
 	
 	
-	fp = fopen("A_B889047_À±ÁØÈ£.txt", "w");
+	fp = fopen("A_B889047_ìœ¤ì¤€í˜¸.txt", "w");
 	fprintf(fp, "The data with CRC is %s", bin_cpy);
 	fclose(fp);
 	return 0;
